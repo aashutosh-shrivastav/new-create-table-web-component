@@ -1,0 +1,21 @@
+
+<div>
+  <h3>{{TableName}} get data from {{DataUrl}}</h3>
+</div>
+<div>
+  <table id  = "datatable">
+    <thead>
+      <tr>
+        <th  *ngFor="let key of ColData"> {{key.header}} </th>
+
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of GridData">
+        <td *ngFor="let key of Coldata" ><span> {{ record[key.field] }} </span></td>
+
+      </tr>
+    </tbody>
+  </table>
+</div>
