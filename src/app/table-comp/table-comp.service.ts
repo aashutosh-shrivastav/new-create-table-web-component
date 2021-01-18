@@ -1,19 +1,36 @@
 import { Injectable }from '@angular/core';
-import { HttpClient } from '@angular/common/http' ;
+import { HttpClient ,HttpErrorResponse } from '@angular/common/http' ;
+import { Observable } from 'rxjs';
+import {catchError} from 'rxjs/operators';
+import { throwError } from 'rxjs';
 @Injectable({
     providedIn : 'root'
 })
 
 export class TableService{
-// 
-    constructor(private httpClient: HttpClient) {
+//           
+
+    constructor( private httpClient: HttpClient) {
      }
 
-    
-    getData(url:string){
-       let resp = this.httpClient.get(url);
-        console.log(resp);
-        return resp;
-    }
+     getUsers(url:string) : Observable<any>{
+         return this.httpClient.get(url)
+                               .pipe(
+                                catchError(this.errorHandler) 
+                                );
+     }
+
+     errorHandler(error:any){
+        let errorMessage = '';
+        if (error.error instanceof ErrorEvent) {
+            // client-side error
+            errorMessage = ` Error: ${error.error.message} ` ;
+        } else {
+            // server-side error
+            errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+        }
+        console.log(errorMessage);
+        return throwError(errorMessage);
+     }
 
 }

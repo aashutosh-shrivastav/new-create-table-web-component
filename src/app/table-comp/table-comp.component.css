@@ -1,4 +1,6 @@
-
+.tablename {
+  text-align: center;
+}
 #datatable {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -15,7 +17,7 @@
     padding:12px 8px;
 
     text-align: left;
-    background-color: #4CAF50;
+    background-color: #5f72c2;
     color: white;
   }
 

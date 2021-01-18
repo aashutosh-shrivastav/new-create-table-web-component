@@ -1,6 +1,6 @@
 
-<div>
-  <h3>{{TableName}} get data from {{DataUrl}}</h3>
+<div class="tablename">
+  <h3>{{TableName || " Table"}}</h3>
 </div>
 <div>
   <table id  = "datatable">
@@ -12,8 +12,8 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let record of GridData">
-        <td *ngFor="let key of Coldata" ><span> {{ record[key.field] }} </span></td>
+      <tr *ngFor="let record of UserData">
+        <td *ngFor="let key of ColData" ><span> {{ record[key.field] }} </span></td>
 
       </tr>
     </tbody>

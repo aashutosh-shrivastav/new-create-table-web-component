@@ -6,33 +6,34 @@ import {TableService} from './table-comp.service';
   selector: 'app-table-comp',
   templateUrl: './table-comp.component.html',
   styleUrls: ['./table-comp.component.css'],
-  encapsulation: ViewEncapsulation.ShadowDom
 
 })
 export class TableCompComponent implements OnInit {
 
   @Input() ColData:any;
-  @Input() TableName:string |undefined;
-  @Input() DataUrl: string = '';
+  @Input() TableName:string  = "" ;
+  @Input() DataUrl: string  = "";
   
-  GridData:any;
-  
+  UserData:any;
+  //
  
-  constructor(private tableService: TableService) {
+  constructor(private _tableService: TableService) {
   
    }
 
+
+  
+
   ngOnInit() {
-   this.loadGrid();
-   console.log(this.ColData);
-   console.log(this.GridData);
-   console.log(this.DataUrl);
-
-
+    this.loadUsers();
   }
-  loadGrid(){
-    this.tableService.getData(this.DataUrl).subscribe((data:any)  => { this.GridData = data; })
-
+ 
+  loadUsers(){
+    this._tableService.getUsers(this.DataUrl)
+                      .subscribe((data)=>{
+                        console.log("data type " + data);
+                        this.UserData = data;})
   }
+  
 
 }
