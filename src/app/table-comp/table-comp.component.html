@@ -1,21 +1,40 @@
-
-<div class="tablename">
-  <h3>{{TableName || " Table"}}</h3>
-</div>
 <div>
-  <table id  = "datatable">
-    <thead>
-      <tr>
-        <th  *ngFor="let key of ColData"> {{key.header}} </th>
+  <div class="tablename">
+    <h3>{{TableName || " Table"}}</h3>
+  </div>
+  <div>
+    <table id  = "datatable">
+      <thead>
+        <tr>
+          <th  *ngFor="let key of ColData"> {{key.header}} </th>
+  
+  
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of UserData">
+          <td *ngFor="let key of ColData" >
+            <span > {{ record[key.field] }} </span>
+   
+          </td>
+  
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let record of UserData">
-        <td *ngFor="let key of ColData" ><span> {{ record[key.field] }} </span></td>
-
-      </tr>
-    </tbody>
-  </table>
 </div>
+
+<!--
+
+<span *ngIf="record[key.field].length <= WordLimit"> {{ record[key.field] }} </span>
+          <span *ngIf="showMore && record[key.field].length > WordLimit ">
+             {{ record[key.field] }} 
+            <span class="fw-bold  cursor" (click) = "toggleShowMore()" >less</span>
+          </span>
+          <span *ngIf="!showMore && record[key.field].length > WordLimit ">
+              {{ record[key.field].substring(0,WordLimit) }}...
+             <span class="fw-bold  cursor" (click) = "toggleShowMore()" >more</span>
+          </span>
+
+-->

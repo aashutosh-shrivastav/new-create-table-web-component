@@ -13,12 +13,15 @@ export class TableCompComponent implements OnInit {
   @Input() ColData:any;
   @Input() TableName:string  = "" ;
   @Input() DataUrl: string  = "";
-  
+  //@Input() WordLimit:number;
   UserData:any;
+  //showMore:boolean;
+
   //
  
   constructor(private _tableService: TableService) {
-  
+   // this.showMore=false;
+    
    }
 
 
@@ -26,6 +29,7 @@ export class TableCompComponent implements OnInit {
 
   ngOnInit() {
     this.loadUsers();
+
   }
  
   loadUsers(){
@@ -34,6 +38,9 @@ export class TableCompComponent implements OnInit {
                         console.log("data type " + data);
                         this.UserData = data;})
   }
+
+
+  //toggleShowMore(){this.showMore = !this.showMore;}
   
 
 }
